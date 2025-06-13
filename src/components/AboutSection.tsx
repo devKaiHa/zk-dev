@@ -1,88 +1,76 @@
 import {
   Code,
-  Shield,
-  Zap,
   Globe,
-  Cpu,
   Database,
-  Lock,
-  Rocket,
+  Smartphone,
+  Gamepad2,
+  ShieldCheck,
+  Layers,
+  Wrench,
 } from "lucide-react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const AboutSection = () => {
+  const { t } = useTranslation();
   const [activeFeature, setActiveFeature] = useState(0);
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
   const features = [
     {
-      icon: Shield,
-      title: "Privacy-First Architecture",
-      description:
-        "Revolutionary zero-knowledge protocols that ensure complete transaction privacy while maintaining full verifiability.",
-      details:
-        "Advanced cryptographic primitives including zk-SNARKs and STARKs for bulletproof privacy.",
+      icon: Code,
+      title: "ABOUT.FEATURE.FULL_STACK_WEB_TITLE",
+      description: "ABOUT.FEATURE.FULL_STACK_WEB_DESC",
+      details: "ABOUT.FEATURE.FULL_STACK_WEB_DETAILS",
       color: "from-green-400 to-emerald-600",
     },
     {
-      icon: Zap,
-      title: "Quantum-Speed Processing",
-      description:
-        "Optimized algorithms delivering sub-millisecond proof generation with unprecedented throughput.",
-      details:
-        "Custom ASIC designs and parallel processing for maximum performance.",
+      icon: Smartphone,
+      title: "ABOUT.FEATURE.NATIVE_MOBILE_TITLE",
+      description: "ABOUT.FEATURE.NATIVE_MOBILE_DESC",
+      details: "ABOUT.FEATURE.NATIVE_MOBILE_DETAILS",
       color: "from-yellow-400 to-orange-600",
     },
     {
-      icon: Code,
-      title: "Developer Ecosystem",
-      description:
-        "Comprehensive SDK with intuitive APIs, extensive documentation, and powerful debugging tools.",
-      details:
-        "Multi-language support with TypeScript, Rust, Go, and Python bindings.",
+      icon: Database,
+      title: "ABOUT.FEATURE.DATABASE_TITLE",
+      description: "ABOUT.FEATURE.DATABASE_DESC",
+      details: "ABOUT.FEATURE.DATABASE_DETAILS",
       color: "from-blue-400 to-purple-600",
     },
     {
-      icon: Globe,
-      title: "Planetary Scale Infrastructure",
-      description:
-        "Distributed network architecture capable of handling billions of concurrent users globally.",
-      details: "Edge computing integration with 99.99% uptime guarantee.",
+      icon: Gamepad2,
+      title: "ABOUT.FEATURE.GAME_TITLE",
+      description: "ABOUT.FEATURE.GAME_DESC",
+      details: "ABOUT.FEATURE.GAME_DETAILS",
       color: "from-purple-400 to-pink-600",
     },
     {
-      icon: Cpu,
-      title: "Neural Network Integration",
-      description:
-        "AI-powered optimization for automatic circuit design and proof optimization.",
-      details:
-        "Machine learning algorithms that adapt and improve system performance.",
+      icon: ShieldCheck,
+      title: "ABOUT.FEATURE.DATA_PRIVACY_TITLE",
+      description: "ABOUT.FEATURE.DATA_PRIVACY_DESC",
+      details: "ABOUT.FEATURE.DATA_PRIVACY_DETAILS",
       color: "from-indigo-400 to-cyan-600",
     },
     {
-      icon: Database,
-      title: "Interchain Compatibility",
-      description:
-        "Seamless integration across all major blockchain networks and legacy systems.",
-      details: "Universal bridge protocols supporting 50+ blockchain networks.",
+      icon: Globe,
+      title: "ABOUT.FEATURE.CLOUD_ARCHITECTURE_TITLE",
+      description: "ABOUT.FEATURE.CLOUD_ARCHITECTURE_DESC",
+      details: "ABOUT.FEATURE.CLOUD_ARCHITECTURE_DETAILS",
       color: "from-teal-400 to-green-600",
     },
     {
-      icon: Lock,
-      title: "Military-Grade Security",
-      description:
-        "Post-quantum cryptographic standards with formal verification of all critical components.",
-      details:
-        "Audited by leading security firms with zero vulnerabilities found.",
+      icon: Layers,
+      title: "ABOUT.FEATURE.CUSTOM_SOFTWARE_TITLE",
+      description: "ABOUT.FEATURE.CUSTOM_SOFTWARE_DESC",
+      details: "ABOUT.FEATURE.CUSTOM_SOFTWARE_DETAILS",
       color: "from-red-400 to-pink-600",
     },
     {
-      icon: Rocket,
-      title: "Future-Ready Innovation",
-      description:
-        "Continuous research and development pushing the boundaries of what's possible.",
-      details:
-        "Partnerships with top universities and research institutions worldwide.",
+      icon: Wrench,
+      title: "ABOUT.FEATURE.SUPPORT_TITLE",
+      description: "ABOUT.FEATURE.SUPPORT_DESC",
+      details: "ABOUT.FEATURE.SUPPORT_DETAILS",
       color: "from-orange-400 to-red-600",
     },
   ];
@@ -145,21 +133,18 @@ const AboutSection = () => {
         <div className="text-center mb-20">
           <div className="inline-block mb-6">
             <span className="px-4 py-2 bg-gradient-brand text-white text-sm font-bold rounded-full uppercase tracking-wider animate-glow">
-              About ZK-dev
+              {t("ABOUT.ABOUT")} ZK-DEV
             </span>
           </div>
           <h2 className="text-6xl md:text-8xl font-black mb-8">
             <span className="bg-gradient-brand bg-clip-text text-transparent">
-              REDEFINING
+              {t("ABOUT.REDEFINING")}
             </span>
             <br />
-            <span className="text-white">POSSIBILITY</span>
+            <span className="text-white">{t("ABOUT.POSSIBILITY")}</span>
           </h2>
           <p className="text-xl text-white/70 max-w-4xl mx-auto leading-relaxed">
-            We're not just building technology—we're architecting the future of
-            digital privacy. Our revolutionary zero-knowledge infrastructure is
-            the foundation for a new era of decentralized applications that
-            prioritize user sovereignty and data protection.
+            {t("ABOUT.ABOUT_TEXT")}
           </p>
         </div>
 
@@ -194,10 +179,10 @@ const AboutSection = () => {
 
                   {/* Content */}
                   <h3 className="text-xl font-bold text-white mb-4 group-hover:text-brand-light transition-colors duration-300">
-                    {feature.title}
+                    {t(feature.title)}
                   </h3>
                   <p className="text-white/70 leading-relaxed text-sm mb-4">
-                    {feature.description}
+                    {t(feature.description)}
                   </p>
 
                   {/* Expandable details */}
@@ -208,7 +193,7 @@ const AboutSection = () => {
                         : "max-h-0 opacity-0"
                     }`}>
                     <p className="text-brand-light text-xs font-semibold">
-                      {feature.details}
+                      {t(feature.details)}
                     </p>
                   </div>
 
@@ -259,32 +244,27 @@ const AboutSection = () => {
             <div className="relative z-10 text-center">
               <h3 className="text-4xl font-black text-white mb-8">
                 <span className="bg-gradient-brand bg-clip-text text-transparent">
-                  OUR VISION
+                  {t("ABOUT.OUR_VISION")}
                 </span>
               </h3>
               <p className="text-lg text-white/90 leading-relaxed mb-8">
-                ZK-dev's vision is simple: to shape the future of the web by
-                consistently delivering groundbreaking and highly functional
-                digital platforms. We strive to be at the forefront of
-                technological advancements, turning complex ideas into
-                accessible and impactful realities for our clients and the wider
-                digital community.
+                {t("ABOUT.OUR_VISION_CONTENT")}
               </p>
 
               {/* Interactive stats */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                 {[
-                  { value: "∞", label: "Privacy Guarantee" },
-                  { value: "<1ms", label: "Proof Generation" },
-                  { value: "20+", label: "Projects completed" },
-                  { value: "99.99%", label: "System Uptime" },
+                  { value: "∞", label: "ABOUT.PRIVACY_GUARANTEE" },
+                  { value: "<1ms", label: "ABOUT.PROOF_GENERATION" },
+                  { value: "20+", label: "ABOUT.PROJECTS_COMPLETED" },
+                  { value: "99.99%", label: "ABOUT.SYSTEM_UPTIME" },
                 ].map((stat, index) => (
                   <div key={index} className="group cursor-pointer">
                     <div className="text-3xl font-black bg-gradient-brand bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-300">
                       {stat.value}
                     </div>
                     <div className="text-white/70 text-sm group-hover:text-white transition-colors duration-300">
-                      {stat.label}
+                      {t(stat.label)}
                     </div>
                   </div>
                 ))}

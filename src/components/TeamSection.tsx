@@ -1,44 +1,68 @@
-import { Linkedin, Twitter, Github } from "lucide-react";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import XIcon from "@mui/icons-material/X";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import DescriptionIcon from "@mui/icons-material/Description";
+import Tooltip from "@mui/material/Tooltip";
+import { useTranslation } from "react-i18next";
 
 const TeamSection = () => {
+  const { t } = useTranslation();
   const teamMembers = [
     {
-      name: "Abdalrohman ALHAJALI",
-      role: "Founder & CEO",
-      bio: "Cryptography researcher with 10+ years in zero-knowledge protocols. Former Principal Engineer at leading blockchain companies.",
+      name: "TEAM.ALHAJALI",
+      role: `${t("TEAM.FOUNDER")} & ${t("TEAM.CEO")}`,
+      bio: "TEAM.ALHAJALI_CONTENT",
       avatar: "/api/placeholder/300/300",
+      resume: "alhajali",
+      xtwitter: "Aa253Abdabd",
+      github: "Abdalrhman253",
+      linkedIn: "abdalrohman-alhajali-3033b41ba",
       expertise: [
-        "Zero-Knowledge Proofs",
-        "Cryptography",
-        "Blockchain Architecture",
+        "TEAM.PROJECT_MANAGEMENT",
+        "TEAM.INTERNATIONAL_BUSINESS",
+        "TEAM.DATA_ANALYSIS",
       ],
     },
     {
-      name: "Mohammad SHAHROUR",
-      role: "Back-end team leader & Co-Founder",
-      bio: "Full-stack engineer specializing in privacy-preserving technologies and scalable distributed systems.",
+      name: "TEAM.SHAHROUR",
+      role: `${t("TEAM.CO_FOUNDER")} & ${t("TEAM.BACK_LEADER")}`,
+      bio: "TEAM.SHAHROUR_CONTENT",
       avatar: "/api/placeholder/300/300",
-      expertise: [
-        "Systems Architecture",
-        "Privacy Tech",
-        "Distributed Computing",
-      ],
+      resume: "shahrour",
+      xtwitter: "MohammadShahrur",
+      github: "DevZeroSh",
+      linkedIn: "mohammad-shahrour-b9ab69270",
+      expertise: ["TEAM.BACK_DEVELOPMENT", "TEAM.SERVER_MANAGEMENT"],
     },
     {
-      name: "Abdulrahman HASANATO",
-      role: "Front-end team leader & Co-Founder",
-      bio: "PhD in Applied Cryptography from MIT. Published 25+ papers on zero-knowledge proofs and privacy-preserving computation.",
+      name: "TEAM.HASANATO",
+      role: `${t("TEAM.CO_FOUNDER")} & ${t("TEAM.FRONT_LEADER")}`,
+      bio: "TEAM.HASANATO_CONTENT",
       avatar: "/api/placeholder/300/300",
-      expertise: ["Applied Cryptography", "Research", "Protocol Design"],
-    },
-    {
-      name: "Other person",
-      role: "Barista",
-      bio: "Previously led engineering teams at top fintech companies. Expert in building secure, scalable financial infrastructure.",
-      avatar: "/api/placeholder/300/300",
-      expertise: ["Tea", "Coffee", "Rose Hip"],
+      resume: "hasanato",
+      xtwitter: "devKaiHa",
+      github: "devKaiHa",
+      linkedIn: "devKaiHa",
+      expertise: ["TEAM.FRONT_DEVELOPMENT", "TEAM.LANGUAGE_PROF"],
     },
   ];
+
+  const handleDownload = (resume: String) => {
+    const link = document.createElement("a");
+    link.href = `/resume/${resume}_ar.pdf`;
+
+    // Suggest a filename for the user
+    link.download = `${resume}_AR.pdf`; // This is the name of the downloaded file
+
+    // Append the link to the document body
+    document.body.appendChild(link);
+
+    // Trigger the link to trigger the download
+    link.click();
+
+    // Remove the link from the document body
+    document.body.removeChild(link);
+  };
 
   return (
     <section
@@ -65,13 +89,13 @@ const TeamSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-8">
           {teamMembers.map((member, index) => (
             <div
               key={member.name}
               className="group relative animate-fade-in-up"
               style={{ animationDelay: `${index * 0.1}s` }}>
-              <div className="relative bg-white/5 backdrop-blur-sm rounded-3xl border border-white/10 overflow-hidden hover:border-brand-light/50 transition-all duration-500 hover:scale-105 p-8">
+              <div className="relative bg-white/5 backdrop-blur-sm rounded-3xl border border-white/10 overflow-hidden hover:border-brand-light/50 transition-all duration-500 hover:scale-105 p-6">
                 {/* Glow effect */}
                 <div className="absolute inset-0 bg-gradient-brand opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-3xl"></div>
 
@@ -92,13 +116,13 @@ const TeamSection = () => {
                   {/* Content */}
                   <div className="text-center">
                     <h3 className="text-xl font-bold text-white mb-1">
-                      {member.name}
+                      {t(member.name)}
                     </h3>
                     <p className="text-brand-light font-medium mb-4">
                       {member.role}
                     </p>
                     <p className="text-white/70 text-sm leading-relaxed mb-6">
-                      {member.bio}
+                      {t(member.bio)}
                     </p>
 
                     {/* Expertise tags */}
@@ -107,22 +131,71 @@ const TeamSection = () => {
                         <span
                           key={skill}
                           className="px-2 py-1 bg-white/10 text-white/80 rounded-full text-xs border border-white/20">
-                          {skill}
+                          {t(skill)}
                         </span>
                       ))}
                     </div>
 
                     {/* Social links */}
                     <div className="flex justify-center gap-3">
-                      <button className="p-2 text-white/60 hover:text-brand-light transition-colors duration-300">
-                        <Linkedin size={18} />
-                      </button>
-                      <button className="p-2 text-white/60 hover:text-brand-light transition-colors duration-300">
-                        <Twitter size={18} />
-                      </button>
-                      <button className="p-2 text-white/60 hover:text-brand-light transition-colors duration-300">
-                        <Github size={18} />
-                      </button>
+                      <Tooltip
+                        title="LinkedIn"
+                        placement="top"
+                        disableInteractive>
+                        <button className="p-2 text-white/60 hover:text-brand-light transition-colors duration-300">
+                          <LinkedInIcon
+                            size={18}
+                            onClick={() => {
+                              window.open(
+                                `https://www.linkedin.com/in/${member.linkedIn}`,
+                                "_blank"
+                              );
+                            }}
+                          />
+                        </button>
+                      </Tooltip>
+                      <Tooltip title="X" placement="top" disableInteractive>
+                        <button className="p-2 text-white/60 hover:text-brand-light transition-colors duration-300">
+                          <XIcon
+                            size={18}
+                            onClick={() => {
+                              window.open(
+                                `https://www.x.com/${member.xtwitter}`,
+                                "_blank"
+                              );
+                            }}
+                          />
+                        </button>
+                      </Tooltip>
+                      <Tooltip
+                        title="GitHub"
+                        placement="top"
+                        disableInteractive>
+                        <button className="p-2 text-white/60 hover:text-brand-light transition-colors duration-300">
+                          <GitHubIcon
+                            size={18}
+                            onClick={() => {
+                              window.open(
+                                `https://www.github.com/${member.github}`,
+                                "_blank"
+                              );
+                            }}
+                          />
+                        </button>
+                      </Tooltip>
+                      <Tooltip
+                        title="Resume"
+                        placement="top"
+                        disableInteractive>
+                        <button className="p-2 text-white/60 hover:text-brand-light transition-colors duration-300">
+                          <DescriptionIcon
+                            size={18}
+                            onClick={() => {
+                              handleDownload(member.resume);
+                            }}
+                          />
+                        </button>
+                      </Tooltip>
                     </div>
                   </div>
                 </div>
@@ -135,15 +208,15 @@ const TeamSection = () => {
         <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8">
           {[
             { label: "Team Members", value: "10+" },
-            { label: "Countries", value: "5" },
+            { label: "Countries", value: "3" },
             { label: "Research Papers", value: "50+" },
-            { label: "Years Combined Experience", value: "200+" },
+            { label: "Years Combined Experience", value: "100+" },
           ].map((stat, index) => (
             <div
               key={stat.label}
               className="text-center p-6 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 animate-scale-in"
               style={{ animationDelay: `${index * 0.1 + 0.5}s` }}>
-              <div className="text-3xl font-bold bg-gradient-brand bg-clip-text text-transparent mb-2">
+              <div className="text-3xl font-bold bg-gradient-brand bg-clip-text text-transparent mb-2 cursor-pointer">
                 {stat.value}
               </div>
               <div className="text-white/70 text-sm">{stat.label}</div>

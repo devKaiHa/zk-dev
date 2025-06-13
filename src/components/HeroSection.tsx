@@ -1,7 +1,9 @@
 import { ChevronDown } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 const HeroSection = () => {
+  const { t } = useTranslation();
   const [isPlaying, setIsPlaying] = useState(false);
   const [particles, setParticles] = useState<
     Array<{ id: number; x: number; y: number; size: number; opacity: number }>
@@ -92,13 +94,13 @@ const HeroSection = () => {
         </div>
 
         <div className="text-lg md:text-xl text-white/60 mb-12 max-w-4xl mx-auto leading-relaxed">
-          Where{" "}
+          {t("HERO.WHERE")}{" "}
           <span className="text-brand-light font-semibold hover:text-white transition-colors cursor-pointer">
-            visionary ideas
+            {t("HERO.VISIONARY_IDEAS")}
           </span>{" "}
-          transform into{" "}
+          {t("HERO.TRANSFORM_INTO")}{" "}
           <span className="text-brand-light font-semibold hover:text-white transition-colors cursor-pointer">
-            powerful digital realities
+            {t("HERO.POWERFUL_DIGITAL_REALITIES")}
           </span>
           .
         </div>
@@ -109,7 +111,7 @@ const HeroSection = () => {
             onClick={scrollToAbout}
             className="group relative px-8 py-4 bg-gradient-brand text-white font-bold rounded-full overflow-hidden hover:scale-110 transition-all duration-500 hover:shadow-2xl hover:shadow-brand-light/50">
             <span className="relative z-10 flex items-center gap-3">
-              EXPLORE UNIVERSE
+              {t("HERO.EXPLORE_UNIVERSE")}
             </span>
             <div className="absolute inset-0 bg-white/20 translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
             <div className="absolute inset-0 bg-gradient-brand opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500"></div>
@@ -123,7 +125,7 @@ const HeroSection = () => {
             }
             className="group px-8 py-4 border-2 border-brand-light/30 text-brand-light font-bold rounded-full hover:border-brand-light hover:bg-brand-light/10 transition-all duration-500 backdrop-blur-sm relative overflow-hidden">
             <span className="relative z-10 flex items-center gap-3">
-              VIEW PROJECTS
+              {t("HERO.VIEW_PROJECTS")}
             </span>
             <div className="absolute inset-0 bg-gradient-to-r from-brand-light/0 via-brand-light/10 to-brand-light/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
           </button>
@@ -135,7 +137,7 @@ const HeroSection = () => {
         <button
           onClick={scrollToAbout}
           className="group flex flex-col items-center gap-2 text-white/60 hover:text-white transition-all duration-500">
-          <div className="text-sm tracking-widest">SCROLL</div>
+          <div className="text-sm tracking-widest">{t("HERO.SCROLL")}</div>
           <div className="relative">
             <ChevronDown
               size={32}

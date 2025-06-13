@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const Navigation = () => {
+  const { t } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -26,10 +28,10 @@ const Navigation = () => {
   };
 
   const navItems = [
-    { label: "About", id: "about" },
-    { label: "Projects", id: "projects" },
-    { label: "Team", id: "team" },
-    { label: "Contact", id: "contact" },
+    { label: t("NAV.ABOUT"), id: "about" },
+    { label: t("NAV.PROJECTS"), id: "projects" },
+    { label: t("NAV.TEAM"), id: "team" },
+    { label: t("NAV.CONTACT"), id: "contact" },
   ];
 
   return (
@@ -43,7 +45,7 @@ const Navigation = () => {
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <div className="text-2xl font-bold bg-gradient-brand bg-clip-text text-transparent">
-            ZK-dev
+            ZK-DEV
           </div>
 
           {/* Desktop Navigation */}

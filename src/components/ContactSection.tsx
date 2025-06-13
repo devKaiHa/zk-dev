@@ -1,5 +1,6 @@
-import { Mail, MapPin, Phone, Send, MessageSquare } from "lucide-react";
+import { Mail, MapPin, Phone, Send } from "lucide-react";
 import { useState } from "react";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -21,24 +22,32 @@ const ContactSection = () => {
       title: "Email Us",
       content: "info@zk-dev.com",
       description: "Send us an email anytime",
+      link: "mailto:info@zk-dev.com",
     },
     {
       icon: Phone,
       title: "Call Us",
-      content: "+90 (538) 740 08 61",
+      content: "+963 959 482 327",
+      content2: "+90 (538) 740 08 61",
       description: "Available 7/24",
+      link: "tel:963959482327",
+      link2: "tel:905387400861",
     },
     {
       icon: MapPin,
       title: "Visit Us",
       content: "Aleppo, Syria",
       description: "Come say hello at our office",
+      link: "https://maps.app.goo.gl/NPVrPg7EPMyQxm447",
     },
     {
-      icon: MessageSquare,
+      icon: WhatsAppIcon,
       title: "Live Chat",
-      content: "Start a conversation",
+      content: "Start a conversation (SY)",
+      content2: "Start a conversation (TR)",
       description: "Available 24/7 for support",
+      link: "https://wa.me/963959482327",
+      link2: "https://wa.me/905387400861",
     },
   ];
 
@@ -62,7 +71,7 @@ const ContactSection = () => {
           </h2>
           <p className="text-xl text-white/70 max-w-3xl mx-auto">
             Ready to revolutionize your privacy infrastructure? Let's discuss
-            how ZK-dev can transform your vision into reality.
+            how ZK-DEV can transform your vision into reality.
           </p>
         </div>
 
@@ -95,8 +104,26 @@ const ContactSection = () => {
                     <h4 className="text-lg font-semibold text-white mb-2">
                       {info.title}
                     </h4>
-                    <p className="text-brand-light font-medium mb-1">
-                      {info.content}
+                    <p className="text-brand-light font-medium mb-1 cursor-pointer">
+                      <span
+                        onClick={() => {
+                          if (info?.link) {
+                            window.open(info.link, "_blank");
+                          }
+                        }}>
+                        {info.content}
+                      </span>
+                      {info?.content2 && (
+                        <>
+                          <br />
+                          <span
+                            onClick={() => {
+                              window.open(info?.link2, "_blank");
+                            }}>
+                            {info?.content2}
+                          </span>
+                        </>
+                      )}
                     </p>
                     <p className="text-white/60 text-sm">{info.description}</p>
                   </div>
@@ -105,7 +132,7 @@ const ContactSection = () => {
             </div>
 
             {/* Additional CTA */}
-            <div className="p-8 bg-gradient-ethereal rounded-3xl border border-white/10 backdrop-blur-sm">
+            {/*<div className="p-8 bg-gradient-ethereal rounded-3xl border border-white/10 backdrop-blur-sm">
               <h4 className="text-2xl font-bold text-white mb-4">
                 Join Our Community
               </h4>
@@ -114,16 +141,18 @@ const ContactSection = () => {
                 technology and connect with like-minded innovators.
               </p>
               <div className="flex gap-4">
-                <button className="px-6 py-3 bg-gradient-brand text-white rounded-full hover:scale-105 transition-transform duration-300">
-                  Join Discord
-                </button>
                 <button
                   onClick={() => window.open("https://x.com/zk-dev", "_blank")}
-                  className="px-6 py-3 border border-brand-light/50 text-brand-light rounded-full hover:bg-brand-light/10 transition-all duration-300">
+                  className="px-6 py-3 bg-gradient-brand text-white rounded-full hover:scale-105 transition-transform duration-300">
                   Follow X
                 </button>
+                 <button
+                  onClick={() => window.open("https://x.com/zk-dev", "_blank")}
+                  className="px-6 py-3 border border-brand-light/50 text-brand-light rounded-full hover:bg-brand-light/10 transition-all duration-300">
+                  Join Community
+                </button> 
               </div>
-            </div>
+            </div>*/}
           </div>
 
           {/* Contact Form */}
