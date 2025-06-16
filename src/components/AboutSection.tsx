@@ -255,7 +255,7 @@ const AboutSection = () => {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                 {[
                   { value: "∞", label: "ABOUT.PRIVACY_GUARANTEE" },
-                  { value: "<1ms", label: "ABOUT.PROOF_GENERATION" },
+                  { value: "+5", label: "ABOUT.HAPPY_CLIENT" },
                   { value: "20+", label: "ABOUT.PROJECTS_COMPLETED" },
                   { value: "99.99%", label: "ABOUT.SYSTEM_UPTIME" },
                 ].map((stat, index) => (

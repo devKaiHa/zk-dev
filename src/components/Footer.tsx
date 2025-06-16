@@ -1,22 +1,22 @@
 import { Mail } from "lucide-react";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
+  const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
 
   const footerLinks = {
-    Company: [
-      { text: "About Us", href: "/#about" },
-      { text: "Our Team", href: "/#team" },
+    "FOOTER.COMPANY": [
+      { text: t("NAV.ABOUT"), href: "/#about" },
+      { text: t("NAV.PROJECTS"), href: "/#team" },
     ],
-    Projects: [
-      { text: "E-Recruitment", href: "#projects" }, ///project/e-recruitment
-      { text: "Hira Institute", href: "#projects" },
-      { text: "E-Exhibition", href: "#projects" },
-      { text: "Online Marketplace", href: "#projects" },
+    "FOOTER.PROJECTS": [
+      { text: t("PROJECTS.E_RECRUITMENT"), href: "#project1" },
+      { text: t("PROJECTS.HIRA_INSTITUTE"), href: "#project2" },
+      { text: t("PROJECTS.E_EXHIBITION"), href: "#project3" },
+      { text: t("PROJECTS.ONLINE_MARKETPLACE"), href: "#project4" },
     ],
-    // Resources: ["Documentation", "Research Papers", "Blog", "Community"],
-    // Legal: ["Privacy Policy", "Terms of Service", "Security", "Compliance"],
   };
 
   return (
@@ -35,8 +35,7 @@ const Footer = () => {
               ZK-DEV
             </div>
             <p className="text-white/70 leading-relaxed mb-6 max-w-md">
-              Crafting modern, futuristic web experiences - that's the ZK-DEV
-              promise.
+              {t("FOOTER.ABOUT")}
             </p>
             <div className="flex gap-4">
               <button className="p-3 bg-white/5 backdrop-blur-sm border border-white/20 rounded-xl text-white/60 hover:text-white hover:border-brand-light/50 transition-all duration-300">
@@ -61,7 +60,7 @@ const Footer = () => {
           {/* Links sections */}
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
-              <h3 className="text-white font-semibold mb-4">{category}</h3>
+              <h3 className="text-white font-semibold mb-4">{t(category)}</h3>
               <ul className="space-y-3">
                 {links.map((linkItem) => (
                   <li key={linkItem.text}>
@@ -105,7 +104,7 @@ const Footer = () => {
         {/* Bottom section */}
         <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="text-white/60 text-sm">
-            © {currentYear} ZK-DEV. All rights reserved.
+            © {currentYear} ZK-DEV. {t("FOOTER.RIGHTS")}
           </div>
           <div className="flex gap-6 text-sm">
             {/*   <button className="text-white/60 hover:text-white transition-colors duration-300">

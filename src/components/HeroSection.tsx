@@ -79,11 +79,13 @@ const HeroSection = () => {
         <div
           className="group cursor-pointer mb-8"
           onClick={() => setIsPlaying(!isPlaying)}>
-          <h1 className="text-7xl md:text-9xl font-black mb-4 relative">
+          <h1
+            className="text-7xl md:text-9xl font-black mb-4 relative"
+            dir="ltr">
             <span className="bg-gradient-brand bg-clip-text text-transparent relative z-10 hover:scale-105 transition-transform duration-500 inline-block">
               ZK
             </span>
-            <span className="text-white/20 mx-4">•</span>
+            <span className="text-white/20 mx-4">-</span>
             <span className="bg-gradient-brand-reverse bg-clip-text text-transparent relative z-10 hover:scale-105 transition-transform duration-500 inline-block">
               DEV
             </span>

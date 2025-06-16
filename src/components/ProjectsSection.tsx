@@ -15,6 +15,7 @@ const ProjectsSection = () => {
       status: "PROJECTS.BETA",
       category: "PROJECTS.GOVERNANCE",
       openSource: false,
+      githubLink: null,
       previewLink: null,
     },
     {
@@ -24,6 +25,7 @@ const ProjectsSection = () => {
       status: "PROJECTS.ALPHA",
       category: "PROJECTS.EDUCATION",
       openSource: true,
+      githubLink: "https://github.com/DevZeroSh/hira",
       previewLink: null,
     },
     {
@@ -33,6 +35,7 @@ const ProjectsSection = () => {
       status: "PROJECTS.DEVELOPMENT",
       category: "PROJECTS.BUSINESS",
       openSource: false,
+      githubLink: null,
       previewLink: null,
     },
     {
@@ -42,6 +45,7 @@ const ProjectsSection = () => {
       status: "PROJECTS.DEVELOPMENT",
       category: "PROJECTS.BUSINESS",
       openSource: false,
+      githubLink: null,
       previewLink: null,
     },
   ];
@@ -98,6 +102,7 @@ const ProjectsSection = () => {
           {projects.map((project, index) => (
             <div
               key={project.title}
+              id={`project${index + 1}`}
               className="group relative bg-white/5 backdrop-blur-sm rounded-3xl border border-white/10 overflow-hidden hover:border-brand-light/50 transition-all duration-500 hover:scale-[1.02] animate-scale-in"
               style={{ animationDelay: `${index * 0.1}s` }}>
               {/* Gradient overlay */}
@@ -142,9 +147,14 @@ const ProjectsSection = () => {
                     Learn More
                     <ArrowRight size={16} />
                   </button> */}
-                  {project?.openSource && (
+                  {project?.openSource && project?.githubLink && (
                     <button className="p-2 text-white/60 hover:text-white transition-colors duration-300">
-                      <GitHubIcon size={20} />
+                      <GitHubIcon
+                        onClick={() => {
+                          window.open(project?.githubLink, "_blank");
+                        }}
+                        size={20}
+                      />
                     </button>
                   )}
                   {project?.previewLink && (

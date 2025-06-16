@@ -43,7 +43,7 @@ const TeamSection = () => {
       xtwitter: "devKaiHa",
       github: "devKaiHa",
       linkedIn: "devKaiHa",
-      expertise: ["TEAM.FRONT_DEVELOPMENT", "TEAM.LANGUAGE_PROF"],
+      expertise: ["TEAM.FRONT_DEVELOPMENT", "TEAM.UI_UX"],
     },
   ];
 
@@ -78,14 +78,13 @@ const TeamSection = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-20">
           <h2 className="text-5xl md:text-6xl font-bold mb-6">
-            Meet Our{" "}
+            {t("TEAM.MEET_OUR")}{" "}
             <span className="bg-gradient-brand bg-clip-text text-transparent">
-              Team
+              {t("TEAM.TEAM")}
             </span>
           </h2>
           <p className="text-xl text-white/70 max-w-3xl mx-auto">
-            Visionary experts united by a shared passion for privacy technology
-            and the future of decentralized systems.
+            {t("TEAM.MEET_TEAM_CONTENT")}
           </p>
         </div>
 
@@ -104,10 +103,12 @@ const TeamSection = () => {
                   <div className="relative mb-6">
                     <div className="w-24 h-24 mx-auto bg-gradient-brand rounded-full p-1">
                       <div className="w-full h-full bg-gray-800 rounded-full flex items-center justify-center text-2xl font-bold text-white">
-                        {member.name
-                          .split(" ")
-                          .map((n) => n[0])
-                          .join("")}
+                        {t(
+                          member.name
+                            .split(" ")
+                            .map((n) => n[0])
+                            .join("")
+                        )}
                       </div>
                     </div>
                     <div className="absolute inset-0 rounded-full bg-gradient-brand opacity-0 group-hover:opacity-30 transition-opacity duration-500 blur-xl"></div>
@@ -184,7 +185,7 @@ const TeamSection = () => {
                         </button>
                       </Tooltip>
                       <Tooltip
-                        title="Resume"
+                        title={t("TEAM.RESUME")}
                         placement="top"
                         disableInteractive>
                         <button className="p-2 text-white/60 hover:text-brand-light transition-colors duration-300">
@@ -207,10 +208,10 @@ const TeamSection = () => {
         {/* Team stats */}
         <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8">
           {[
-            { label: "Team Members", value: "10+" },
-            { label: "Countries", value: "3" },
-            { label: "Research Papers", value: "50+" },
-            { label: "Years Combined Experience", value: "100+" },
+            { label: "TEAM.TEAM_MEMBERS", value: "10+" },
+            { label: "TEAM.COUNTRY", value: "3" },
+            { label: "TEAM.RESEARCH_PAPERS", value: "50+" },
+            { label: "TEAM.YEARS_COMBINED_EXP", value: "100+" },
           ].map((stat, index) => (
             <div
               key={stat.label}
@@ -219,7 +220,7 @@ const TeamSection = () => {
               <div className="text-3xl font-bold bg-gradient-brand bg-clip-text text-transparent mb-2 cursor-pointer">
                 {stat.value}
               </div>
-              <div className="text-white/70 text-sm">{stat.label}</div>
+              <div className="text-white/70 text-sm">{t(stat.label)}</div>
             </div>
           ))}
         </div>

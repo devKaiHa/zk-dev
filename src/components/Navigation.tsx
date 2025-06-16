@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "./ui/LanguageSwitcher";
 
 const Navigation = () => {
-  const { t } = useTranslation();
+  const { i18n, t } = useTranslation();
+  const currentLanguage = i18n.language;
+
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -54,11 +57,12 @@ const Navigation = () => {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="relative text-white/80 hover:text-white transition-colors duration-300 group">
+                className="relative text-white/80 hover:text-white transition-colors duration-300 group me-5">
                 {item.label}
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-brand transition-all duration-300 group-hover:w-full"></span>
               </button>
             ))}
+            <LanguageSwitcher />
           </div>
 
           {/* Mobile Menu Button */}
@@ -77,10 +81,15 @@ const Navigation = () => {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className="text-white/80 hover:text-white transition-colors duration-300 text-left">
+                  className={`text-white/80 hover:text-white transition-colors duration-300 text-${
+                    currentLanguage === "en" ? "left" : "right"
+                  }`}>
                   {item.label}
                 </button>
               ))}
+              <LanguageSwitcher
+                textAlign={currentLanguage === "en" ? "left" : "right"}
+              />
             </div>
           </div>
         )}

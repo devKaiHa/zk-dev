@@ -1,8 +1,10 @@
 import { Mail, MapPin, Phone, Send } from "lucide-react";
 import { useState } from "react";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import { useTranslation } from "react-i18next";
 
 const ContactSection = () => {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -19,33 +21,33 @@ const ContactSection = () => {
   const contactInfo = [
     {
       icon: Mail,
-      title: "Email Us",
+      title: "CONTACT.EMAIL_US",
       content: "info@zk-dev.com",
-      description: "Send us an email anytime",
+      description: "CONTACT.EMAIL_US_CONTENT",
       link: "mailto:info@zk-dev.com",
     },
     {
       icon: Phone,
-      title: "Call Us",
+      title: "CONTACT.CALL_US",
       content: "+963 959 482 327",
       content2: "+90 (538) 740 08 61",
-      description: "Available 7/24",
+      description: "CONTACT.CALL_US_CONTENT",
       link: "tel:963959482327",
       link2: "tel:905387400861",
     },
     {
       icon: MapPin,
-      title: "Visit Us",
+      title: "CONTACT.VISIT_US",
       content: "Aleppo, Syria",
-      description: "Come say hello at our office",
+      description: "CONTACT.VISIT_US_CONTENT",
       link: "https://maps.app.goo.gl/NPVrPg7EPMyQxm447",
     },
     {
       icon: WhatsAppIcon,
-      title: "Live Chat",
-      content: "Start a conversation (SY)",
-      content2: "Start a conversation (TR)",
-      description: "Available 24/7 for support",
+      title: "CONTACT.LIVE_CHAT",
+      content: t("CONTACT.START_CONVERSATION"),
+      content2: t("CONTACT.START_CONVERSATION"),
+      description: "CONTACT.LIVE_CHAT_CONTENT",
       link: "https://wa.me/963959482327",
       link2: "https://wa.me/905387400861",
     },
@@ -64,14 +66,13 @@ const ContactSection = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-20">
           <h2 className="text-5xl md:text-6xl font-bold mb-6">
-            Get in{" "}
+            {t("CONTACT.GET_IN")}{" "}
             <span className="bg-gradient-brand bg-clip-text text-transparent">
-              Touch
+              {t("CONTACT.TOUCH")}
             </span>
           </h2>
           <p className="text-xl text-white/70 max-w-3xl mx-auto">
-            Ready to revolutionize your privacy infrastructure? Let's discuss
-            how ZK-DEV can transform your vision into reality.
+            {t("CONTACT.CONTACT_CONTENT")}
           </p>
         </div>
 
@@ -80,12 +81,10 @@ const ContactSection = () => {
           <div className="space-y-8">
             <div>
               <h3 className="text-3xl font-bold text-white mb-6">
-                Let's Connect
+                {t("CONTACT.LETS_CONNECT")}
               </h3>
               <p className="text-white/70 leading-relaxed mb-8">
-                Whether you're interested in our cutting-edge solutions, want to
-                join our team, or have questions about zero-knowledge
-                technology, we'd love to hear from you.
+                {t("CONTACT.LETS_CONNECT_CONTENT")}
               </p>
             </div>
 
@@ -102,7 +101,7 @@ const ContactSection = () => {
                       <info.icon className="w-6 h-6 text-white" />
                     </div>
                     <h4 className="text-lg font-semibold text-white mb-2">
-                      {info.title}
+                      {t(info.title)}
                     </h4>
                     <p className="text-brand-light font-medium mb-1 cursor-pointer">
                       <span
@@ -125,7 +124,9 @@ const ContactSection = () => {
                         </>
                       )}
                     </p>
-                    <p className="text-white/60 text-sm">{info.description}</p>
+                    <p className="text-white/60 text-sm">
+                      {t(info.description)}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -165,7 +166,7 @@ const ContactSection = () => {
                   <label
                     htmlFor="name"
                     className="block text-white/80 text-sm font-medium mb-2">
-                    Name
+                    {t("CONTACT.NAME")}
                   </label>
                   <input
                     type="text"
@@ -175,7 +176,6 @@ const ContactSection = () => {
                       setFormData({ ...formData, name: e.target.value })
                     }
                     className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/20 rounded-xl text-white placeholder-white/50 focus:border-brand-light focus:outline-none focus:ring-2 focus:ring-brand-light/20 transition-all duration-300"
-                    placeholder="Your name"
                     required
                   />
                 </div>
@@ -183,7 +183,7 @@ const ContactSection = () => {
                   <label
                     htmlFor="email"
                     className="block text-white/80 text-sm font-medium mb-2">
-                    Email
+                    {t("CONTACT.EMAIL")}
                   </label>
                   <input
                     type="email"
@@ -193,7 +193,6 @@ const ContactSection = () => {
                       setFormData({ ...formData, email: e.target.value })
                     }
                     className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/20 rounded-xl text-white placeholder-white/50 focus:border-brand-light focus:outline-none focus:ring-2 focus:ring-brand-light/20 transition-all duration-300"
-                    placeholder="your.email@example.com"
                     required
                   />
                 </div>
@@ -203,7 +202,7 @@ const ContactSection = () => {
                 <label
                   htmlFor="subject"
                   className="block text-white/80 text-sm font-medium mb-2">
-                  Subject
+                  {t("CONTACT.SUBJECT")}
                 </label>
                 <input
                   type="text"
@@ -213,7 +212,6 @@ const ContactSection = () => {
                     setFormData({ ...formData, subject: e.target.value })
                   }
                   className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/20 rounded-xl text-white placeholder-white/50 focus:border-brand-light focus:outline-none focus:ring-2 focus:ring-brand-light/20 transition-all duration-300"
-                  placeholder="What's this about?"
                   required
                 />
               </div>
@@ -222,7 +220,7 @@ const ContactSection = () => {
                 <label
                   htmlFor="message"
                   className="block text-white/80 text-sm font-medium mb-2">
-                  Message
+                  {t("CONTACT.MESSAGE")}
                 </label>
                 <textarea
                   id="message"
@@ -232,7 +230,6 @@ const ContactSection = () => {
                     setFormData({ ...formData, message: e.target.value })
                   }
                   className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/20 rounded-xl text-white placeholder-white/50 focus:border-brand-light focus:outline-none focus:ring-2 focus:ring-brand-light/20 transition-all duration-300 resize-none"
-                  placeholder="Tell us more about your project or inquiry..."
                   required
                 />
               </div>
@@ -240,7 +237,7 @@ const ContactSection = () => {
               <button
                 type="submit"
                 className="group w-full py-4 bg-gradient-brand text-white font-semibold rounded-xl hover:scale-[1.02] transition-all duration-300 flex items-center justify-center gap-3">
-                <span>Send Message</span>
+                <span>{t("CONTACT.SEND")}</span>
                 <Send
                   className="group-hover:translate-x-1 transition-transform duration-300"
                   size={20}
